@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<display-name>Archetype Created Web Application</display-name>
+
+	<servlet>
+		<servlet-name>GameController</servlet-name>
+		<servlet-class>servlet.jsp.demo.controller.GameController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GameController</servlet-name>
+		<url-pattern>/game/list</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AreaController</servlet-name>
+		<servlet-class>servlet.jsp.demo.controller.AreaController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AreaController</servlet-name>
+		<url-pattern>/area/list</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RoomController</servlet-name>
+		<servlet-class>servlet.jsp.demo.controller.RoomController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RoomController</servlet-name>
+		<url-pattern>/room/list</url-pattern>
+	</servlet-mapping>
+</web-app>
