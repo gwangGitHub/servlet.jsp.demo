@@ -2,7 +2,6 @@ package servlet.jsp.demo.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +31,9 @@ public class GameDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Exception:" + e.getMessage());
-			try {
-				connection.close();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
 			return null;
+		} finally {
+			ConnectionMananger.closeConnection();
 		}
 	}
 }
