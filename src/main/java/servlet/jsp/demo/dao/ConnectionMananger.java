@@ -69,9 +69,18 @@ public class ConnectionMananger {
     }
     
     public static void closeConnection() {
-        if(getConnection() != null)
+    	Connection connection = getConnection();
+        if(connection != null)
 			try {
-				getConnection().close();
+				connection.close();
+				/**
+				 * 注意：关闭数据库连接后必须把ThreadLocal里的Connection给remove掉，要不然会报错：
+				 * com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after connection closed.
+				 * 报错原因可能是因为对于每次访问servlet并不是都用一个新的线程，而是从线程池中获取一个线程
+				 * 这样的话当第二次又拿到上一次用过的同一个线程的时候由于上一次用到的Connection没有从这个线程的ThreadLocal中remove掉，
+				 * 所以并不会新建立一个连接，用的还是上一次已经关闭的数据库连接，这样就报错了。
+				 */
+				connectionHolder.remove(); 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
